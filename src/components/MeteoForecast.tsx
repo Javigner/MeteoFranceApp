@@ -11,7 +11,7 @@ function MeteoForecast(props: {data: WeatherForecast.MeteoData[]}) {
   if (props.data[0] === undefined) {
     return (<Redirect to='/'></Redirect>)
   }
-  let data: any = props.data.find(element => element.name === params.city)
+  const data: any = props.data.find(element => element.name === params.city)
   return (
       <Wrapper>
         <CityPicture

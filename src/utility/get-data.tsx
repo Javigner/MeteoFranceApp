@@ -11,12 +11,6 @@ export const getDataForecast = async (Cities: string[]) => {
       cache: new InMemoryCache(),
       link: restLink,
     });
-    try {
       const response = await client.query({ query });
       return { ...response.data, name: City, picture: Pic };
-    } 
-    catch (error) {
-      console.log(error)
-      return (error)
-    }
   };

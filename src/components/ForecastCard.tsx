@@ -4,12 +4,11 @@ import styled from "styled-components";
 import WeatherForecast from "../models/weather"
 
 function ForecastCard(props: {data: WeatherForecast.Daily, index: number}) {
-  const date = getTodayDate(props.index)
+  const [day, date, month] = getTodayDate(props.index)
   return (
     <Box>
       <DateStyle>
-        {" "}
-        {date[0]} {date[1]} {date[2]}
+        {`${day} ${date} ${month}`}
       </DateStyle>
       <Temp>{props.data.temp.day}°</Temp>
       <Meteo>

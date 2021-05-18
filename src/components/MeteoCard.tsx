@@ -1,16 +1,12 @@
 import MeteoIcon from "./MeteoIcon";
 import styled from "styled-components";
-import WeatherForecast from "../models/weather";
 import { Link } from "react-router-dom"
 
 interface Props {
-  data: WeatherForecast.MeteoData;
   picture: string;
   weather: string;
   city: string;
   temp: number;
-  length: number;
-  index: number;
 }
 
 function MeteoCard(props: Props) {
