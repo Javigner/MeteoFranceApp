@@ -14,3 +14,6 @@ body {
   background: #fefefe;
   font-family: sans-serif;
 }
+a {
+  text-decoration: none;
+}

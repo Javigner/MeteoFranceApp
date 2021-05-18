@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-export const ApiKey = '6fabd592770019a338a3bbb3fe3b6892';
-export const Url = 'https://api.openweathermap.org/data/2.5/onecall?';
+export const ApiKey: string = '6fabd592770019a338a3bbb3fe3b6892';
+export const Url: string = 'https://api.openweathermap.org/data/2.5/onecall?';
 export const query = gql`
   query {
     Wheater @rest(path: "") {
@@ -20,5 +20,6 @@ export const Cities = [
   ['Montpellier', '43.6', '3.8833', 'https://static3.mclcm.net/iod/images/v2/69/citytheque/localite_101_963/1200x630_100_300_000000x30x0.jpg?ts=20200302145802'],
   ['Strasbourg', '48.5833', '7.75', 'https://wookal.com/wp-content/uploads/2020/06/strasbourg-choses-a-voir.jpg'],
   ['Bordeaux', '44.8333', '-0.5667', 'https://www.lyonaeroports.com/sites/default/files/styles/adl_medium/public/2020-05/bordeaux-header_0.jpg?itok=N8uDQeEr'],
-  ['Lille', '50.63297', '3.05858', 'https://hellolille.eu/wp-content/uploads/2020/06/CCI_HelloLille_Nablezon-8-1536x1024.jpg']
+  ['Lille', '50.63297', '3.05858', 'https://hellolille.eu/wp-content/uploads/2020/06/CCI_HelloLille_Nablezon-8-1536x1024.jpg'],
+  ['Ajaccio', '41.919229', '8.738635', 'https://cdnfr1.img.sputniknews.com/img/104391/61/1043916126_0:0:3371:1823_1000x541_80_0_0_fb24770bff09828dad641f57e91ebf28.jpg']
 ]

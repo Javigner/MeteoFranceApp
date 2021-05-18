@@ -1,16 +1,26 @@
 import styled from "styled-components";
 import ForecastCard from "./ForecastCard";
+import WeatherForecast from "../models/weather"
+import { useParams, Redirect } from "react-router-dom"
+interface Params {
+  city: string
+}
 
-function MeteoForecast(props) {
+function MeteoForecast(props: {data: WeatherForecast.MeteoData[]}) {
+  const params = useParams<Params>();
+  if (props.data[0] === undefined) {
+    return (<Redirect to='/'></Redirect>)
+  }
+  let data: any = props.data.find(element => element.name === params.city)
   return (
       <Wrapper>
         <CityPicture
-          picture={props.data.picture}
+          picture={data.picture}
         >
-          <CityName>Météo de {props.data.name}</CityName>
+          <CityName>Météo de {data.name}</CityName>
         </CityPicture>
-        {props.data.Wheater.daily.map((data, index) => (
-          <ForecastCard key={index} index={index} data={data} />
+        {data.Wheater.daily.map((DataDaily: WeatherForecast.Daily, index: number) => (
+          <ForecastCard key={index} index={index} data={DataDaily} />
         ))}
       </Wrapper>
   );
@@ -31,7 +41,7 @@ const Wrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `
-const CityPicture = styled.div`
+const CityPicture = styled.div<{picture: string}>`
   background-image: url(${props => props.picture});
   border: 1px solid #ccc;
   background-size: cover;

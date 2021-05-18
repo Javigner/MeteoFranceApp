@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import React from 'react'
 
-function MeteoIcon (props) {
+function MeteoIcon (props: {weather: string}) {
   const weather = props.weather;
-  const renderSwitch = (weather) => {
+  const renderSwitch = (weather: string) => {
     switch (weather) {
       case "Clouds":
         return <i className="fas fa-cloud-sun"></i>;

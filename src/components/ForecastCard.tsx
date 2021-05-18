@@ -1,14 +1,15 @@
 import getTodayDate from "../utility/get-today-date";
 import MeteoIcon from "./MeteoIcon";
 import styled from "styled-components";
+import WeatherForecast from "../models/weather"
 
-function ForecastCard(props) {
-  const date = getTodayDate(props.index).split(" ");
+function ForecastCard(props: {data: WeatherForecast.Daily, index: number}) {
+  const date = getTodayDate(props.index)
   return (
     <Box>
       <DateStyle>
         {" "}
-        {date[0]} {date[1]}
+        {date[0]} {date[1]} {date[2]}
       </DateStyle>
       <Temp>{props.data.temp.day}°</Temp>
       <Meteo>

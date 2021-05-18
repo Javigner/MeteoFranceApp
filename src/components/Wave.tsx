@@ -16,6 +16,10 @@ const WaveStyle = styled.div`
   left: -10px;
   width: 100%;
   fill: white;
+  
+  @media screen and (max-width: 620px) {
+    margin-top: -20px;
+  }
 `
 
 export default Wave;
