@@ -1,6 +1,6 @@
-import { ApolloClient, InMemoryCache } from "@apollo/client";
-import { RestLink } from "apollo-link-rest";
-import { Url, ApiKey, query } from "./const";
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { RestLink } from 'apollo-link-rest';
+import { Url, ApiKey, query } from './const';
 
 export const getDataForecast = async (Cities: string[]) => {
     const City = Cities[0];
@@ -8,9 +8,9 @@ export const getDataForecast = async (Cities: string[]) => {
     const UriPath = `${Url}lat=${Cities[1]}&lon=${Cities[2]}&appid=${ApiKey}&lang=fr&units=metric`;
     const restLink = new RestLink({ uri: UriPath });
     const client = new ApolloClient({
-      cache: new InMemoryCache(),
-      link: restLink,
+        cache: new InMemoryCache(),
+        link: restLink,
     });
-      const response = await client.query({ query });
-      return { ...response.data, name: City, picture: Pic };
-  };
+    const response = await client.query({ query });
+    return { ...response.data, name: City, picture: Pic };
+};
