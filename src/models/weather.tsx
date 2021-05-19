@@ -1,5 +1,4 @@
-declare module WeatherForecast {
-
+declare namespace WeatherForecast {
     export interface Weather {
         id: number;
         main: string;
@@ -79,7 +78,6 @@ declare module WeatherForecast {
         name: string;
         picture: string;
     }
-
 }
 
 export default WeatherForecast;
