@@ -1,6 +1,7 @@
 import MeteoIcon from './MeteoIcon';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 interface Props {
     picture: string;

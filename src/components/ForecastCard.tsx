@@ -1,7 +1,8 @@
 import getTodayDate from '../utility/get-today-date';
 import MeteoIcon from './MeteoIcon';
 import styled from 'styled-components';
-import WeatherForecast from '../models/weather';
+import * as WeatherForecast from '../models/weather';
+import React from 'react';
 
 function ForecastCard(props: { data: WeatherForecast.Daily; index: number }) {
     const [day, date, month] = getTodayDate(props.index);

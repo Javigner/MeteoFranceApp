@@ -9,6 +9,7 @@ import theme from './theme';
 import { Route, Switch } from 'react-router-dom';
 import MeteoCards from './pages/MeteoCards';
 import ForeCastPages from './pages/ForecastPages';
+import React from 'react';
 
 function App() {
     const errorDetected = (error: Error) => {

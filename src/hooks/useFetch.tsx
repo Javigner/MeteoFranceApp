@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getDataForecast } from '../utility/get-data';
-import WeatherForecast from '../models/weather';
+import * as WeatherForecast from '../models/weather';
 
 function useFetch(Cities: string[][], onError: (error: Error) => void) {
     const [Data, setData] = useState<WeatherForecast.MeteoData[]>([]);

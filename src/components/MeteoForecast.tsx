@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import ForecastCard from './ForecastCard';
-import WeatherForecast from '../models/weather';
+import * as WeatherForecast from '../models/weather';
 import { useParams, Redirect } from 'react-router-dom';
+import React from 'react';
+
 interface Params {
     city: string;
 }

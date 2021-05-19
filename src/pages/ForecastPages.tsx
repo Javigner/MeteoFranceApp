@@ -1,8 +1,9 @@
 import MeteoForecast from '../components/MeteoForecast';
 import styled from 'styled-components';
-import WeatherForecast from '../models/weather';
+import * as WeatherForecast from '../models/weather';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 function ForeCastPages(props: { data: WeatherForecast.MeteoData[] }) {
     return (

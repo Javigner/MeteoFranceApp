@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const ApiKey = '6fabd592770019a338a3bbb3fe3b6892';
+export const ApiKey = '27ae71c09166621580ca9137408ca562';
 export const Url = 'https://api.openweathermap.org/data/2.5/onecall?';
 export const query = gql`
     query {

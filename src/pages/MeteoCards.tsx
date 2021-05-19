@@ -1,6 +1,7 @@
 import MeteoCard from '../components/MeteoCard';
 import styled from 'styled-components';
-import WeatherForecast from '../models/weather';
+import * as WeatherForecast from '../models/weather';
+import React from 'react';
 
 function MeteoCards(props: { data: WeatherForecast.MeteoData[] }) {
     return (
