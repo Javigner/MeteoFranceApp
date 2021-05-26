@@ -1,20 +1,24 @@
-import MeteoForecast from '../components/MeteoForecast';
-import styled from 'styled-components';
-import * as WeatherForecast from '../models/weather';
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-function ForeCastPages(props: { data: WeatherForecast.MeteoData[] }) {
+import MeteoForecast from '../components/MeteoForecast';
+import * as WeatherForecast from '../models/weather';
+
+interface ForeCastPages {
+    meteoData: WeatherForecast.MeteoData[];
+}
+
+function ForeCastPages({ meteoData }: ForeCastPages) {
     return (
-        <Fragment>
+        <>
             <ButtonBox>
                 <Link to="/">
                     <ReturnArrow className="fas fa-arrow-left"></ReturnArrow>
                 </Link>
             </ButtonBox>
-            <MeteoForecast data={props.data} />
-        </Fragment>
+            <MeteoForecast meteoData={meteoData} />
+        </>
     );
 }
 
@@ -22,6 +26,7 @@ const ButtonBox = styled.div`
     text-align: left;
     margin: 20px;
 `;
+
 const ReturnArrow = styled.i`
     &:hover {
         cursor: pointer;

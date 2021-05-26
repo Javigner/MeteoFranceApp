@@ -1,29 +1,42 @@
-import styled from 'styled-components';
+import React from 'react';
+import { useParams, Redirect } from 'react-router-dom';
+import styled, { css } from 'styled-components';
+
 import ForecastCard from './ForecastCard';
 import * as WeatherForecast from '../models/weather';
-import { useParams, Redirect } from 'react-router-dom';
-import React from 'react';
 
 interface Params {
     city: string;
 }
 
-function MeteoForecast(props: { data: WeatherForecast.MeteoData[] }) {
+interface MeteoForecastProps {
+    meteoData: WeatherForecast.MeteoData[];
+}
+
+function MeteoForecast({ meteoData }: MeteoForecastProps) {
     const params = useParams<Params>();
-    if (props.data[0] === undefined) {
+    if (meteoData[0] === undefined) {
         return <Redirect to="/"></Redirect>;
     }
-    const data: any = props.data.find(
+
+    const meteoDataForecast: any = meteoData.find(
         (element) => element.name === params.city
     );
+
+    const { picture, name, Wheater } = meteoDataForecast;
+
     return (
         <Wrapper>
-            <CityPicture picture={data.picture}>
-                <CityName>Météo de {data.name}</CityName>
+            <CityPicture picture={picture}>
+                <CityName>Météo de {name}</CityName>
             </CityPicture>
-            {data.Wheater.daily.map(
-                (DataDaily: WeatherForecast.Daily, index: number) => (
-                    <ForecastCard key={index} index={index} data={DataDaily} />
+            {Wheater.daily.map(
+                (dailyMeteoData: WeatherForecast.Daily, index: number) => (
+                    <ForecastCard
+                        key={index}
+                        index={index}
+                        dailyMeteoData={dailyMeteoData}
+                    />
                 )
             )}
         </Wrapper>
@@ -45,32 +58,41 @@ const Wrapper = styled.div`
         grid-template-columns: 1fr;
     }
 `;
-const CityPicture = styled.div<{ picture: string }>`
-    background-image: url(${(props) => props.picture});
-    border: 1px solid #ccc;
-    background-size: cover;
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    border-radius: 20px;
-    text-align: center;
-    display: flex;
 
-    @media screen and (max-width: 1000px) {
+interface CityPictureProps {
+    picture: string;
+}
+
+const CityPicture = styled.div(
+    ({ picture }: CityPictureProps) => css`
+        background-image: url(${picture});
+        border: 1px solid #ccc;
+        margin: 5px;
+        background-size: cover;
         grid-column-start: 1;
-        grid-column-end: 2;
+        grid-column-end: 3;
         grid-row-start: 1;
         grid-row-end: 3;
-    }
+        border-radius: 20px;
+        text-align: center;
+        display: flex;
 
-    @media screen and (max-width: 620px) {
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 1;
-        grid-row-end: 2;
-    }
-`;
+        @media screen and (max-width: 1000px) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 3;
+        }
+
+        @media screen and (max-width: 620px) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+    `
+);
+
 const CityName = styled.div`
     margin: auto;
     color: white;
@@ -78,4 +100,5 @@ const CityName = styled.div`
     font-weight: 700;
     text-shadow: 1px 1px 0 rgb(0 0 0 / 35%), 1px 1px 5px rgb(0 0 0 / 50%);
 `;
+
 export default MeteoForecast;

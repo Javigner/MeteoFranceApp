@@ -2,15 +2,22 @@ import { useState, useEffect } from 'react';
 import { getDataForecast } from '../utility/get-data';
 import * as WeatherForecast from '../models/weather';
 
-function useFetch(Cities: string[][], onError: (error: Error) => void) {
-    const [Data, setData] = useState<WeatherForecast.MeteoData[]>([]);
+interface Cities {
+    cityName: string;
+    lat: string;
+    long: string;
+    picture: string;
+}
+
+function useFetch(cities: Cities[], onError: (error: Error) => void) {
+    const [dataMeteo, setData] = useState<WeatherForecast.MeteoData[]>([]);
 
     useEffect(() => {
         async function fetchData() {
             try {
                 const response = await Promise.all(
-                    Cities.map(async (City) => {
-                        return await getDataForecast(City);
+                    cities.map(async (city) => {
+                        return getDataForecast(city);
                     })
                 );
                 setData([...response]);
@@ -19,8 +26,8 @@ function useFetch(Cities: string[][], onError: (error: Error) => void) {
             }
         }
         fetchData();
-    }, [Cities, onError]);
-    return Data;
+    }, [cities, onError]);
+    return dataMeteo;
 }
 
 export default useFetch;

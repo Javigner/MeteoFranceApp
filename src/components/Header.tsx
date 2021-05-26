@@ -21,12 +21,14 @@ const HeaderStyle = styled.div`
         height: 200px;
     }
 `;
+
 const TitleBox = styled.div`
     height: 15em;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
+
 const Title = styled.h1`
     margin: 0;
     color: white;
@@ -42,4 +44,5 @@ const Title = styled.h1`
         font-size: 2em;
     }
 `;
+
 export default Header;
