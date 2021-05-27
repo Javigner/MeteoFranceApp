@@ -1,15 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useParams, Redirect } from 'react-router-dom';
 
+import { cities } from '../utility/const';
 import MeteoForecast from '../components/MeteoForecast';
-import * as WeatherForecast from '../models/weather';
 
-interface ForeCastPages {
-    meteoData: WeatherForecast.MeteoData[];
+interface Params {
+    city: string;
 }
 
-function ForeCastPages({ meteoData }: ForeCastPages) {
+function ForeCastPages() {
+    const params = useParams<Params>();
+    const city = cities.find((element) => {
+        return element.cityName === params.city;
+    });
+
+    if (!city) return <Redirect to="/"></Redirect>;
+
     return (
         <>
             <ButtonBox>
@@ -17,7 +25,7 @@ function ForeCastPages({ meteoData }: ForeCastPages) {
                     <ReturnArrow className="fas fa-arrow-left"></ReturnArrow>
                 </Link>
             </ButtonBox>
-            <MeteoForecast meteoData={meteoData} />
+            <MeteoForecast {...city} />
         </>
     );
 }

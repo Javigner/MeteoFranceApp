@@ -1,17 +1,4 @@
-import { gql } from '@apollo/client';
-
-export const apiKey = '1c7bb08718b81098e3f9fa95da90dc6c';
-
 export const url = 'https://api.openweathermap.org/data/2.5/onecall?';
-
-export const query = gql`
-    query {
-        Wheater @rest(path: "") {
-            current
-            daily
-        }
-    }
-`;
 
 export const cities = [
     {
@@ -25,8 +12,7 @@ export const cities = [
         cityName: 'Marseille',
         lat: '43.296398',
         long: '5.37',
-        picture:
-            'https://static3.mclcm.net/iod/images/v2/69/cityNametheque/localite_101_341/1200x630_100_300_000000x30x0.jpg?ts=20200918100802',
+        picture: 'https://static.actu.fr/uploads/2021/03/marseille-rambla.jpeg',
     },
     {
         cityName: 'Lyon',
@@ -60,7 +46,7 @@ export const cities = [
         lat: '43.6',
         long: '3.8833',
         picture:
-            'https://static3.mclcm.net/iod/images/v2/69/cityNametheque/localite_101_963/1200x630_100_300_000000x30x0.jpg?ts=20200302145802',
+            'https://static3.mclcm.net/iod/images/v2/69/citytheque/localite_101_963/1200x630_100_300_000000x30x0.jpg?ts=20200302145802',
     },
     {
         cityName: 'Strasbourg',

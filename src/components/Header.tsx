@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import React from 'react';
+import styled from 'styled-components';
 
 function Header() {
     return (
@@ -14,6 +14,7 @@ function Header() {
 const HeaderStyle = styled.div`
     width: 100%;
     height: 300px;
+
     background-image: url('https://img5.goodfon.com/wallpaper/nbig/e/49/oblaka-nebo-art.jpg');
     background-size: cover;
 
@@ -24,6 +25,7 @@ const HeaderStyle = styled.div`
 
 const TitleBox = styled.div`
     height: 15em;
+
     display: flex;
     align-items: center;
     justify-content: center;

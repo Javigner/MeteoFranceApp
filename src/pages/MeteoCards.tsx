@@ -1,18 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import * as WeatherForecast from '../models/weather';
+import { cities } from '../utility/const';
 import MeteoCardByCity from '../components/MeteoCardByCity';
 
-interface MeteoCardsProps {
-    meteoData: WeatherForecast.MeteoData[];
-}
-
-function MeteoCards({ meteoData }: MeteoCardsProps) {
+function MeteoCards() {
     return (
         <Cards>
-            {meteoData.map((meteoDataByCity) => {
-                return MeteoCardByCity(meteoDataByCity);
+            {cities.map((city) => {
+                return <MeteoCardByCity {...city} key={city.cityName} />;
             })}
         </Cards>
     );

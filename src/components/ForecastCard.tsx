@@ -11,16 +11,18 @@ interface ForecastCardProps {
 }
 
 function ForecastCard({ dailyMeteoData, index }: ForecastCardProps) {
-    const [daytmp, date, month] = getNextDayDate(index);
+    const [today, date, month] = getNextDayDate(index);
     const { temp, weather } = dailyMeteoData;
     const { min, max, day } = temp;
+    const { main, description } = weather[0];
+
     return (
         <Box>
-            <DateStyle>{`${daytmp} ${date} ${month}`}</DateStyle>
+            <DateStyle>{`${today} ${date} ${month}`}</DateStyle>
             <Temp>{day}°</Temp>
             <Meteo>
-                <MeteoIcon weather={weather[0].main} />
-                {weather[0].description}
+                <MeteoIcon weather={main} />
+                {description}
             </Meteo>
             <Min>min: {min}°</Min>
             <Max>max: {max}°</Max>

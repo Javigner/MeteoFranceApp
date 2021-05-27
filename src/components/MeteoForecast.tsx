@@ -1,36 +1,30 @@
 import React from 'react';
-import { useParams, Redirect } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import ForecastCard from './ForecastCard';
 import * as WeatherForecast from '../models/weather';
+import useFetchMeteoData from '../hooks/useFetchMeteoData';
 
-interface Params {
-    city: string;
+interface CityProps {
+    cityName: string;
+    lat: string;
+    long: string;
+    picture: string;
 }
 
-interface MeteoForecastProps {
-    meteoData: WeatherForecast.MeteoData[];
-}
+function MeteoForecast({ cityName, lat, long, picture }: CityProps) {
+    const { data, error } = useFetchMeteoData(lat, long);
 
-function MeteoForecast({ meteoData }: MeteoForecastProps) {
-    const params = useParams<Params>();
-    if (meteoData[0] === undefined) {
-        return <Redirect to="/"></Redirect>;
-    }
+    if (error) console.log(error);
 
-    const meteoDataForecast: any = meteoData.find(
-        (element) => element.name === params.city
-    );
-
-    const { picture, name, Wheater } = meteoDataForecast;
+    if (!data) return null;
 
     return (
         <Wrapper>
             <CityPicture picture={picture}>
-                <CityName>Météo de {name}</CityName>
+                <CityName>Météo de {cityName}</CityName>
             </CityPicture>
-            {Wheater.daily.map(
+            {data.getCityMeteo.daily.map(
                 (dailyMeteoData: WeatherForecast.Daily, index: number) => (
                     <ForecastCard
                         key={index}
@@ -69,11 +63,13 @@ const CityPicture = styled.div(
         border: 1px solid #ccc;
         margin: 5px;
         background-size: cover;
+        border-radius: 20px;
+
         grid-column-start: 1;
         grid-column-end: 3;
         grid-row-start: 1;
         grid-row-end: 3;
-        border-radius: 20px;
+
         text-align: center;
         display: flex;
 

@@ -1,22 +1,31 @@
 import React from 'react';
 
 import MeteoCard from './MeteoCard';
-import * as WeatherForecast from '../models/weather';
+import useFetchMeteoData from '../hooks/useFetchMeteoData';
 
-interface MeteoCardByCityProps {
-    name: string;
-    Wheater: WeatherForecast.Wheater;
+interface CityProps {
+    cityName: string;
+    lat: string;
+    long: string;
     picture: string;
 }
 
-function MeteoCardByCity({ name, Wheater, picture }: MeteoCardByCityProps) {
+function MeteoCardByCity({ cityName, lat, long, picture }: CityProps) {
+    const { data, error } = useFetchMeteoData(lat, long);
+
+    if (error) console.log(error);
+
+    if (!data) return null;
+
+    const { temp, weather } = data.getCityMeteo.current;
+
     return (
         <MeteoCard
-            key={name}
-            temp={Wheater.current.temp}
-            city={name}
+            key={cityName}
+            temp={temp}
+            city={cityName}
             picture={picture}
-            weather={Wheater.current.weather[0].main}
+            weather={weather[0].main}
         />
     );
 }
