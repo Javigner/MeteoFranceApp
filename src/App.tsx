@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { RestLink } from 'apollo-link-rest';
+import styled from 'styled-components';
 
 import { url } from './utility/const';
 import { theme, GlobalStyle } from './theme';
