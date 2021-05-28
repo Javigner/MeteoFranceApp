@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Redirect, Link } from 'react-router-dom';
 
 import { cities } from '../utility/const';
 import MeteoForecast from '../components/MeteoForecast';
