@@ -18,6 +18,7 @@ function App() {
         cache: new InMemoryCache(),
         link: restLink,
     });
+
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
