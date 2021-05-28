@@ -8,7 +8,6 @@ import { url } from './utility/const';
 import { theme, GlobalStyle } from './theme';
 import Wave from './components/Wave';
 import Header from './components/Header';
-import styled from 'styled-components';
 import MeteoCards from './pages/MeteoCards';
 import ForeCastPages from './pages/ForecastPages';
 
